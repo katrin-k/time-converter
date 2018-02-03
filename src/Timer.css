@@ -1,0 +1,12 @@
+.timer {
+  margin: 2rem;
+  padding: 2rem 3rem;
+  border: 1px solid maroon;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.timer-text {
+  margin-bottom: 0.5rem;
+  font-size: 1.4rem;
+}
