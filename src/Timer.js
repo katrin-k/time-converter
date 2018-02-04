@@ -33,9 +33,9 @@ export default class Timerwrapper extends Component {
     const unixMilliSeconds = Math.floor(date)
 
     return <section className="section-timer">
-      <Timer text="Human readable:" date={humanDate} />
-      <Timer text="Unix second:" date={unixSecond} />
-      <Timer text="Unix millisecond:" date={unixMilliSeconds} />
+      <Timer text="Human readable:" date={humanDate} buttonText="datetime" />
+      <Timer text="Unix second:" date={unixSecond} buttonText="time" />
+      <Timer text="Unix millisecond:" date={unixMilliSeconds} buttonText="time" />
     </section>
   }
 }
@@ -46,7 +46,7 @@ class Timer extends Component {
     return <div className="timer">
       <div className="timer-text">{text}</div> 
       <div>{date}</div>
-      <Copybutton copytext={date} />
+      <Copybutton copytext={date} buttonText={this.props.buttonText} />
     </div>
   }
 }

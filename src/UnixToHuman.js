@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import moment from 'moment'
 import Copybutton from './Copybutton'
 import Button from './Button'
+import './Button.css'
 
 export default class UnixToHuman extends Component {
   constructor(props) {
@@ -24,16 +25,28 @@ export default class UnixToHuman extends Component {
 
     return <section>
       <h2>Convert epoch/unix to human readable date</h2>
-      <form onSubmit={this.convertToHumanDate} >
+      <form onSubmit={this.convertToHumanDate} className="form-convert" >
         <input type="text" value={this.state.inputValue} onChange={this.handleInputChange} />
         <Button value="Convert to Human readable Date" />
       </form>
       {humanDate
-      ? <div>
-          <p>ISO 8601 UTC: {iso8601UTC}</p><Copybutton copytext={iso8601UTC} />
-          <p>ISO 8601 UTC with milliseconds: {iso8601UTCnative}</p><Copybutton copytext={iso8601UTCnative} />
-          <p>ISO 8601 / RFC 3339 your time zone: {iso8601}</p><Copybutton copytext={iso8601} />
-          <p>RFC 2822 your time zone: {rfc2822}</p><Copybutton copytext={rfc2822} />
+      ? <div className="result-block">
+          <p className="result-line">
+            <span className="result-span" >ISO 8601 UTC: {iso8601UTC}</span>
+            <Copybutton copytext={iso8601UTC} />
+          </p>
+          <p className="result-line">
+            <span className="result-span" >ISO 8601 UTC with milliseconds: {iso8601UTCnative}</span>
+            <Copybutton copytext={iso8601UTCnative} />
+          </p>
+          <p className="result-line">
+            <span className="result-span" >ISO 8601 / RFC 3339 your time zone: {iso8601}</span>
+            <Copybutton copytext={iso8601} />
+          </p>
+          <p className="result-line">
+            <span className="result-span" >RFC 2822 your time zone: {rfc2822}</span>
+            <Copybutton copytext={rfc2822} />
+          </p>
         </div>
       : null}
     </section>

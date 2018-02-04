@@ -1,0 +1,24 @@
+@import 'variables.css';
+
+.form-convert {
+  display: flex;
+  align-items: center;
+}
+
+.form-convert input {
+  font-size: 1.2rem;
+}
+
+.result-block {
+
+}
+
+.result-line {
+  display: flex;
+  align-items: baseline;
+  margin-top: 1rem;
+}
+
+.result-span {
+  margin-right: 0.5rem;
+}

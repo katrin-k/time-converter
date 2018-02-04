@@ -12,7 +12,7 @@ export default class Copybutton extends Component {
 
     return (
     <CopyToClipboard text={this.props.copytext} onCopy={this.onClick}>
-      <button className={this.state.copied ? buttonClicked : buttonStyle}><CopyIcon /> Copy date</button>
+      <button className={this.state.copied ? buttonClicked : buttonStyle}><CopyIcon /> Copy {this.props.buttonText}</button>
     </CopyToClipboard>)
   }
 

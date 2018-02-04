@@ -1,11 +1,11 @@
-.App {
-  text-align: center;
-}
-
 .App-header {
   padding: 3rem;
   background-color: #222;
   color: white;
+}
+
+section {
+  margin-bottom: 3rem;
 }
 
 @media screen and (min-width: 1100px) {
