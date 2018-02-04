@@ -11,6 +11,7 @@
   border: 1px solid var(--green);
   border-radius: 3px;
   padding: 0.3rem 0.5rem;
+  background: transparent;
   color: var(--green);
   font-size: 0.7rem;
   transition: all 0.1s ease-in;

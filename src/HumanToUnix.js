@@ -52,6 +52,5 @@ export default class HumanToUnix extends Component {
   }
 }
 
-
 // Fallback for when native date input is not allowed https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/date
 // how to do that in react?

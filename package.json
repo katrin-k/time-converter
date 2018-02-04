@@ -2,7 +2,7 @@
   "name": "time-converter",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://die-katrin.eu/timeconverter",
+  "homepage": ".",
   "dependencies": {
     "moment": "^2.20.1",
     "react": "^16.2.0",
