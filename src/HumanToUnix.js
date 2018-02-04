@@ -16,11 +16,9 @@ export default class HumanToUnix extends Component {
   render() {
     
     const {unixDate} = this.state
-    const unixSeconds = unixDate ? unixDate : null
-    // const unixMilliseconds = unixDate ? moment(unixDate).valueOf() : null
-
-    console.log("this.state.inputValue", this.state.inputValue)
-
+    const unixSeconds = unixDate ? moment(unixDate).unix() : null
+    const unixMilliseconds = unixDate ? moment(unixDate).valueOf() : null
+    
     return <section>
       <h2>Convert to epoch/unix date</h2>
       <form onSubmit={this.convertToUnixDate} className="form-convert" >
@@ -29,10 +27,16 @@ export default class HumanToUnix extends Component {
         <Button value="Convert to Unix Date" />
       </form>
       {unixDate
-      ? <p className="result-line" >
-          <span className="result-span" >Unix seconds: {unixSeconds}</span><Copybutton copytext={unixSeconds} buttonText="time" />
-          {/* <p>Unix milliseconds: {unixMilliseconds}</p><Copybutton copytext={unixMilliseconds} /> */}
-        </p>
+      ? <div className="result-block">
+          <p className="result-line" >
+            <span className="result-span" >Unix seconds: {unixSeconds}</span>
+            <Copybutton copytext={unixSeconds} buttonText="time in s" />
+          </p>
+          <p className="result-line" >
+            <span className="result-span" >Unix milliseconds: {unixMilliseconds}</span>
+            <Copybutton copytext={unixMilliseconds} buttonText="time in ms" />
+          </p>
+        </div>
       : null}
     </section>
   }
@@ -43,14 +47,14 @@ export default class HumanToUnix extends Component {
 
 
   convertToUnixDate = (e) => {
-    
     e.preventDefault()
-    // const convertedDate = moment(this.state.inputValue, moment.HTML5_FMT.DATETIME_LOCAL).unix()
-    const convertedDate = moment(this.state.inputValue, moment.HTML5_FMT.DATE).unix()
-    console.log("convertedDate", convertedDate)
-    this.setState({unixDate: convertedDate})
+    this.setState({unixDate: this.state.inputValue})
   }
 }
+
+
+    // const convertedDate = moment(this.state.inputValue, moment.HTML5_FMT.DATETIME_LOCAL).unix()
+    // const convertedDate = moment(this.state.inputValue, moment.HTML5_FMT.DATE).unix()
 
 // Fallback for when native date input is not allowed https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/date
 // how to do that in react?
