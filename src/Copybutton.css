@@ -1,0 +1,47 @@
+@import 'variables.css';
+
+.button-copy {
+  position: relative;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  display: inline-flex;
+  align-items: center;
+  margin-top: 0.5rem;
+  border: 1px solid var(--green);
+  border-radius: 3px;
+  padding: 0.3rem 0.5rem;
+  color: var(--green);
+  font-size: 0.9rem;
+  transition: all 0.1s ease-in;
+}
+
+.button-copy:hover {
+  color: white;
+  background-color: var(--green);
+  cursor: pointer;
+}
+
+.button-copy:focus {
+  outline: none;
+}
+
+.button-clicked::after {
+  content: '\2713';
+  position: absolute;
+  right: -28px;
+  color: var(--maroon);
+  font-size: 1.7rem;
+  font-weight: bold;
+  top: -3px;
+}
+
+.button-copy svg {
+  margin-right: 0.5rem;
+  fill: var(--green);
+  transition: all 0.1s ease-in;
+}
+
+.button-copy:hover svg {
+  fill: white;
+}

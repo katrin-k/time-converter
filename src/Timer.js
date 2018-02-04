@@ -32,11 +32,11 @@ export default class Timerwrapper extends Component {
     const unixSecond = moment(date).unix()
     const unixMilliSeconds = Math.floor(date)
 
-    return <div>
+    return <section className="section-timer">
       <Timer text="Human readable:" date={humanDate} />
       <Timer text="Unix second:" date={unixSecond} />
       <Timer text="Unix millisecond:" date={unixMilliSeconds} />
-    </div>
+    </section>
   }
 }
 

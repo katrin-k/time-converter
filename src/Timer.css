@@ -1,12 +1,54 @@
+@import 'variables.css';
+
 .timer {
-  margin: 2rem;
-  padding: 2rem 3rem;
-  border: 1px solid maroon;
-  display: inline-block;
-  vertical-align: top;
+  /* box-sizing: content-box; */
+  margin: 2rem auto;
+  padding: 1rem 3rem 1.5rem;
+  border: 1px solid var(--maroon);
+  max-width: 300px;
 }
 
 .timer-text {
   margin-bottom: 0.5rem;
   font-size: 1.4rem;
+}
+
+@media screen  and (min-width: 768px) {
+  .section-timer {
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  .timer:first-child {
+    flex-basis: 100%;
+    max-width: none;
+  }
+  .timer:nth-child(n+2) {
+    flex-basis: 33%;
+    margin: 2rem 0;
+  }
+}
+
+@media screen  and (min-width: 1000px) {
+  .section-timer {
+    flex-wrap: nowrap;
+  }
+  .timer {
+    width: 220px;
+    height: 110px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .timer:first-child {
+    flex-basis: unset;
+    margin: 2rem auto;
+  }
+  .timer:nth-child(n+2) {
+    flex-basis: unset;
+    margin: 2rem auto;
+  }
 }

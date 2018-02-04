@@ -12,9 +12,11 @@ class App extends Component {
         <header className="App-header">
           <h2>Time converter</h2>
         </header>
-        <Timerwrapper />
-        <HumanToUnix />
-        <UnixToHuman />
+        <div className="wrapper">
+          <Timerwrapper />
+          <HumanToUnix />
+          <UnixToHuman />
+        </div>
       </div>
     );
   }
