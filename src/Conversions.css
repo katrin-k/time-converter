@@ -1,16 +1,20 @@
 @import 'variables.css';
 
+.label-radio {
+  margin-right: 0.5rem;
+  margin-left: 0.1rem;
+  position: relative;
+  top: 1px;
+}
+
 .form-convert {
   display: flex;
   align-items: center;
+  margin-top: 0.5rem;
 }
 
 .form-convert input {
   font-size: 1.2rem;
-}
-
-.result-block {
-
 }
 
 .result-line {

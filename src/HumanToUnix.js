@@ -19,24 +19,30 @@ export default class HumanToUnix extends Component {
     const unixSeconds = unixDate ? moment(unixDate).unix() : null
     const unixMilliseconds = unixDate ? moment(unixDate).valueOf() : null
     
-
-    // <input type={this.state.radioValue} value={this.state.inputValue} onChange={this.handleInputChange} pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" />
-    // <input type={this.state.radioValue} step="1" value={this.state.inputValue} onChange={this.handleInputChange} pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" />
-    // <input type={this.state.radioValue} step="0.001" value={this.state.inputValue} onChange={this.handleInputChange} pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" />
     let input = null
     if (radioValue === 'datetime-local' || radioValue === 'date') {
-      input = <input type={this.state.radioValue} value={this.state.inputValue} onChange={this.handleInputChange} pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" />
+      input = <input 
+        type={this.state.radioValue} 
+        value={this.state.inputValue} 
+        onChange={this.handleInputChange}/>
     } else if (radioValue === 'datetime-local-seconds') {
-      input = <input type="datetime-local" step="1" value={this.state.inputValue} onChange={this.handleInputChange} pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" />
+      input = <input 
+        type="datetime-local" 
+        step="1" 
+        value={this.state.inputValue} 
+        onChange={this.handleInputChange}/>
     } else if (radioValue === 'datetime-local-ms') {
-      input = <input type="datetime-local" step="0.001" value={this.state.inputValue} onChange={this.handleInputChange} pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" />
+      input = <input 
+        type="datetime-local" 
+        step="0.001" 
+        value={this.state.inputValue} 
+        onChange={this.handleInputChange}/>
     }
 
     return <section>
       <h2>Convert to unix date</h2>
       <InputOptions initialValue={this.state.radioValue} onClick={this.handleRadioButtonChange}/>
       <form onSubmit={this.convertToUnixDate} className="form-convert" >
-        {/* pattern… */}
         {input}
         <Button value="Convert to Unix Date" />
       </form>
@@ -65,7 +71,7 @@ export default class HumanToUnix extends Component {
 
   convertToUnixDate = (e) => {
     e.preventDefault()
-    // adjust to account for different input values
+    console.log("this.state.inputValue", this.state.inputValue)
     this.setState({unixDate: this.state.inputValue})
   }
 }
@@ -77,13 +83,13 @@ class InputOptions extends Component {
     return (
       <form>
         <input type="radio" id="datetime" name="dateOptions" value="datetime-local" onChange={this.handleOption} checked={initialValue === 'datetime-local'} />
-        <label htmlFor="datetime">Date & Time</label>
+        <label htmlFor="datetime" className="label-radio">Date & Time</label>
         <input type="radio" id="date" name="dateOptions" value="date" onChange={this.handleOption} checked={initialValue === 'date'} />
-        <label htmlFor="date">Date only</label>
+        <label htmlFor="date" className="label-radio">Date only</label>
         <input type="radio" id="datetime-sec" name="dateOptions" value="datetime-local-seconds" onChange={this.handleOption} checked={initialValue === 'datetime-local-seconds'} />
-        <label htmlFor="datetime-sec">Date & Time (with seconds)</label>
+        <label htmlFor="datetime-sec" className="label-radio">Date & Time (with seconds)</label>
         <input type="radio" id="datetime-ms" name="dateOptions" value="datetime-local-ms" onChange={this.handleOption} checked={initialValue === 'datetime-local-ms'} />
-        <label htmlFor="datetime-ms">Date & Time (with milliseconds)</label>
+        <label htmlFor="datetime-ms" className="label-radio">Date & Time (with milliseconds)</label>
       </form>
     )
   }
