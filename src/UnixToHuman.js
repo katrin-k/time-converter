@@ -24,7 +24,7 @@ export default class UnixToHuman extends Component {
 
 
     return <section>
-      <h2>Convert epoch/unix to human readable date</h2>
+      <h2>Convert unix to human readable date</h2>
       <form onSubmit={this.convertToHumanDate} className="form-convert" >
         <input type="text" value={this.state.inputValue} onChange={this.handleInputChange} />
         <Button value="Convert to Human readable Date" />
