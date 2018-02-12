@@ -41,9 +41,10 @@ export default class HumanToUnix extends React.Component {
 
     return <section>
       <InputOptions initialValue={this.state.radioValue} onClick={this.handleRadioButtonChange}/>
-      <form onSubmit={this.convertToUnixDate} className="form-convert" >
+      <form onSubmit={this.convertToUnixDate} onReset={this.handleReset} className="form-convert" >
         {input}
-        <Button value="Convert to Unix Date" />
+        <Button value="Convert to Unix Date" type="submit" />
+        <Button value="Reset" type="reset" />
       </form>
       {baseDate
       ? <div className="result-block">
@@ -74,6 +75,11 @@ export default class HumanToUnix extends React.Component {
 
   handleRadioButtonChange = (value) => {
     this.setState({radioValue: value})
+  }
+
+  handleReset = (e) => {
+    e.preventDefault()
+    this.setState({inputValue: ''})
   }
 
   convertToUnixDate = (e) => {

@@ -24,9 +24,10 @@ export default class UnixToHuman extends React.Component {
     const rfc2822 = baseDate ? baseDate.getRfc2822() : null
 
     return <section>
-      <form onSubmit={this.convertToHumanDate} className="form-convert" >
+      <form onSubmit={this.convertToHumanDate} onReset={this.handleReset} className="form-convert" >
         <input type="number" value={this.state.inputValue} onChange={this.handleInputChange} />
-        <Button value="Convert to Human readable Date" />
+        <Button value="Convert to Human readable Date" type="submit" />
+        <Button value="Reset" type="reset" />
       </form>
       {baseDate
       ? <div className="result-block">
@@ -82,6 +83,10 @@ export default class UnixToHuman extends React.Component {
     this.setState({inputValue: event.target.value});
   }
 
+  handleReset = (e) => {
+    e.preventDefault()
+    this.setState({inputValue: ''})
+  }
 
   convertToHumanDate = (e) => {
     e.preventDefault()
