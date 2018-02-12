@@ -1,24 +1,24 @@
-import React, { Component } from 'react';
-import moment from 'moment'
+import React from 'react';
 import Copybutton from './Copybutton'
 import Button from './Button'
 import './Conversions.css'
+import Datehandler from './Datehandler';
 
-export default class HumanToUnix extends Component {
+export default class HumanToUnix extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
       inputValue: '',
       radioValue: 'datetime-local',
-      unixDate: null
+      baseDate: null
     }
   }
 
   render() {
-    const {unixDate, radioValue} = this.state
-    const unixSeconds = unixDate ? moment(unixDate).unix() : null
-    const unixMilliseconds = unixDate ? moment(unixDate).valueOf() : null
-    
+    const {baseDate, radioValue} = this.state
+    const unixSeconds = baseDate ? baseDate.getUnix() : null
+    const unixMilliseconds = baseDate ? baseDate.getUnixMs() : null
+
     let input = null
     if (radioValue === 'datetime-local' || radioValue === 'date') {
       input = <input 
@@ -46,7 +46,7 @@ export default class HumanToUnix extends Component {
         {input}
         <Button value="Convert to Unix Date" />
       </form>
-      {unixDate
+      {baseDate
       ? <div className="result-block">
           <p className="result-line" >
             <span className="result-span">Unix seconds: {unixSeconds}</span>
@@ -71,12 +71,11 @@ export default class HumanToUnix extends Component {
 
   convertToUnixDate = (e) => {
     e.preventDefault()
-    console.log("this.state.inputValue", this.state.inputValue)
-    this.setState({unixDate: this.state.inputValue})
+    this.setState({baseDate: Datehandler.make(this.state.inputValue)})
   }
 }
 
-class InputOptions extends Component {
+class InputOptions extends React.Component {
   render() {
     const {initialValue} = this.props
     

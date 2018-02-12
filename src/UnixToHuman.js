@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
+import React from 'react';
 import moment from 'moment'
 import Copybutton from './Copybutton'
 import Button from './Button'
 import './Button.css'
 
-export default class UnixToHuman extends Component {
+export default class UnixToHuman extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -21,12 +21,12 @@ export default class UnixToHuman extends Component {
     const iso8601 = moment(humanDate, moment.ISO_8601).format()
     const iso8601UTC = moment.utc(humanDate).format()
     const iso8601UTCnative = moment.utc(humanDate).toISOString()
-    const rfc2822 = humanDate ? moment(humanDate).format('dddd, DD-MMM-YY HH:mm:ss Z') : null
+    const rfc2822 = moment(humanDate).format('dddd, DD-MMM-YY HH:mm:ss Z')
 
     return <section>
       <h2>Convert unix to human readable date</h2>
       <form onSubmit={this.convertToHumanDate} className="form-convert" >
-        <input type="text" value={this.state.inputValue} onChange={this.handleInputChange} />
+        <input type="number" value={this.state.inputValue} onChange={this.handleInputChange} />
         <Button value="Convert to Human readable Date" />
       </form>
       {humanDate
