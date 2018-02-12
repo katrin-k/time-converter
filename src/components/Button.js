@@ -8,7 +8,7 @@ export default class Button extends Component {
     if (type === 'submit') {
       return <button type={type} onClick={this.props.onSubmit} className="button button-submit">{value}</button>
     } else if (type === 'reset') {
-      return <button type={type} className="button button-reset">{value}</button>
+      return <button type='reset' className="button button-reset">{value}</button>
     }
   }
 }

@@ -14,7 +14,8 @@ export default class UnixToHuman extends React.Component {
   }
 
   render() {
-    const {baseDate} = this.state
+    const {baseDate, inputValue} = this.state
+    const canBeSubmitted = inputValue.length > 0
     
     const en12Hrs = baseDate ? baseDate.get12Hrs() : null
     const en24Hrs = baseDate ? baseDate.get24Hrs() : null
@@ -26,8 +27,8 @@ export default class UnixToHuman extends React.Component {
     return <section>
       <form onSubmit={this.convertToHumanDate} onReset={this.handleReset} className="form-convert" >
         <input type="number" value={this.state.inputValue} onChange={this.handleInputChange} />
-        <Button value="Convert to Human readable Date" type="submit" />
-        <Button value="Reset" type="reset" />
+        <Button value="Convert to Human readable Date" type="submit" disabled={!canBeSubmitted} />
+        {canBeSubmitted ? <Button value="Reset" type="reset" /> : null}
       </form>
       {baseDate
       ? <div className="result-block">

@@ -15,36 +15,37 @@ export default class HumanToUnix extends React.Component {
   }
 
   render() {
-    const {baseDate, radioValue} = this.state
+    const {baseDate, radioValue, inputValue} = this.state
     const unixSeconds = baseDate ? baseDate.getUnix() : null
     const unixMilliseconds = baseDate ? baseDate.getUnixMs() : null
+    const canBeSubmitted = inputValue.length > 0
 
     let input = null
     if (radioValue === 'datetime-local' || radioValue === 'date') {
       input = <input 
-        type={this.state.radioValue} 
-        value={this.state.inputValue} 
+        type={radioValue} 
+        value={inputValue} 
         onChange={this.handleInputChange}/>
     } else if (radioValue === 'datetime-local-seconds') {
       input = <input 
         type="datetime-local" 
         step="1" 
-        value={this.state.inputValue} 
+        value={inputValue} 
         onChange={this.handleInputChange}/>
     } else if (radioValue === 'datetime-local-ms') {
       input = <input 
         type="datetime-local" 
         step="0.001" 
-        value={this.state.inputValue} 
+        value={inputValue} 
         onChange={this.handleInputChange}/>
     }
 
     return <section>
-      <InputOptions initialValue={this.state.radioValue} onClick={this.handleRadioButtonChange}/>
+      <InputOptions initialValue={radioValue} onClick={this.handleRadioButtonChange}/>
       <form onSubmit={this.convertToUnixDate} onReset={this.handleReset} className="form-convert" >
         {input}
-        <Button value="Convert to Unix Date" type="submit" />
-        <Button value="Reset" type="reset" />
+        <Button value="Convert to Unix Date" type="submit" disabled={!canBeSubmitted} />
+        {canBeSubmitted ? <Button value="Reset" type="reset" /> : null}
       </form>
       {baseDate
       ? <div className="result-block">
@@ -118,9 +119,6 @@ class InputOptions extends React.Component {
     this.props.onClick(e.target.value)
   }
 }
-
-    // const convertedDate = moment(this.state.inputValue, moment.HTML5_FMT.DATETIME_LOCAL).unix()
-    // const convertedDate = moment(this.state.inputValue, moment.HTML5_FMT.DATE).unix()
 
 // Fallback for when native date input is not allowed https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/date
 // how to do that in react?
