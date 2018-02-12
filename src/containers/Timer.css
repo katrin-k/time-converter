@@ -1,8 +1,7 @@
 @import '../variables.css';
 
 .timer {
-  /* box-sizing: content-box; */
-  margin: 2rem auto;
+  margin: 2rem 0;
   padding: 1rem 3rem 1.5rem;
   border: 1px solid var(--maroon);
   max-width: 300px;
@@ -15,8 +14,6 @@
 
 @media screen  and (min-width: 768px) {
   .section-timer {
-    width: 90%;
-    margin: 0 auto;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -26,8 +23,7 @@
     max-width: none;
   }
   .timer:nth-child(n+2) {
-    flex-basis: 33%;
-    margin: 2rem 0;
+    flex-basis: 30%;
   }
 }
 
@@ -42,13 +38,12 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
+    margin-right: 1rem;
   }
   .timer:first-child {
     flex-basis: unset;
-    margin: 2rem auto;
   }
   .timer:nth-child(n+2) {
     flex-basis: unset;
-    margin: 2rem auto;
   }
 }

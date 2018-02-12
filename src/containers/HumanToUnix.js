@@ -48,14 +48,22 @@ export default class HumanToUnix extends React.Component {
       </form>
       {baseDate
       ? <div className="result-block">
-          <p className="result-line" >
-            <span className="result-span">Unix seconds: {unixSeconds}</span>
-            <Copybutton copytext={unixSeconds} buttonText="time in s" />
-          </p>
-          <p className="result-line" >
-            <span className="result-span">Unix milliseconds: {unixMilliseconds}</span>
-            <Copybutton copytext={unixMilliseconds} buttonText="time in ms" />
-          </p>
+          {/* use map() to display results */}
+          <div className="result-line" >
+            <div className="result-title">Unix seconds:</div>
+            <div>
+              <span className="result-date">{unixSeconds}</span>
+              <Copybutton copytext={unixSeconds} buttonText="time in s" />
+            </div>
+          </div>
+          <div className="result-line" >
+            <div className="result-title">Unix milliseconds:</div>
+            <div>
+              <span className="result-date">{unixMilliseconds}</span>
+              <Copybutton copytext={unixMilliseconds} buttonText="time in ms" />
+            </div>
+            
+          </div>
         </div>
       : null}
     </section>
@@ -80,15 +88,23 @@ class InputOptions extends React.Component {
     const {initialValue} = this.props
     
     return (
-      <form>
-        <input type="radio" id="datetime" name="dateOptions" value="datetime-local" onChange={this.handleOption} checked={initialValue === 'datetime-local'} />
-        <label htmlFor="datetime" className="label-radio">Date & Time</label>
-        <input type="radio" id="date" name="dateOptions" value="date" onChange={this.handleOption} checked={initialValue === 'date'} />
-        <label htmlFor="date" className="label-radio">Date only</label>
-        <input type="radio" id="datetime-sec" name="dateOptions" value="datetime-local-seconds" onChange={this.handleOption} checked={initialValue === 'datetime-local-seconds'} />
-        <label htmlFor="datetime-sec" className="label-radio">Date & Time (with seconds)</label>
-        <input type="radio" id="datetime-ms" name="dateOptions" value="datetime-local-ms" onChange={this.handleOption} checked={initialValue === 'datetime-local-ms'} />
-        <label htmlFor="datetime-ms" className="label-radio">Date & Time (with milliseconds)</label>
+      <form className="form-datetype">
+        <label htmlFor="datetime" className="label-radio">
+          <input type="radio" id="datetime" name="dateOptions" value="datetime-local" onChange={this.handleOption} checked={initialValue === 'datetime-local'} />
+          Date & Time
+        </label>
+        <label htmlFor="date" className="label-radio">
+          <input type="radio" id="date" name="dateOptions" value="date" onChange={this.handleOption} checked={initialValue === 'date'} />
+          Date only
+        </label>
+        <label htmlFor="datetime-sec" className="label-radio">
+          <input type="radio" id="datetime-sec" name="dateOptions" value="datetime-local-seconds" onChange={this.handleOption} checked={initialValue === 'datetime-local-seconds'} />
+          Date & Time (with seconds)
+        </label>
+        <label htmlFor="datetime-ms" className="label-radio">
+          <input type="radio" id="datetime-ms" name="dateOptions" value="datetime-local-ms" onChange={this.handleOption} checked={initialValue === 'datetime-local-ms'} />
+          Date & Time (with milliseconds)
+        </label>
       </form>
     )
   }
