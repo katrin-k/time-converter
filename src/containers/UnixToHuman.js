@@ -1,8 +1,8 @@
 import React from 'react';
-import Datehandler from './Datehandler';
-import Copybutton from './Copybutton'
-import Button from './Button'
-import './Button.css'
+import Datehandler from '../Datehandler';
+import Copybutton from '../components/Copybutton'
+import Button from '../components/Button'
+import '../components/Button.css'
 
 export default class UnixToHuman extends React.Component {
   constructor(props) {
