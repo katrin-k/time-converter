@@ -1,4 +1,4 @@
-@import 'variables.css';
+@import '../variables.css';
 
 .label-radio {
   margin-right: 0.5rem;

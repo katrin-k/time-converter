@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import moment from 'moment'
-import Copybutton from './Copybutton'
+import Copybutton from '../components/Copybutton'
 import './Timer.css'
 
 export default class Timerwrapper extends Component {
