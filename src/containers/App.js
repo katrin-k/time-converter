@@ -4,7 +4,6 @@ import UnixToHuman from './UnixToHuman'
 import HumanToUnix from './HumanToUnix'
 import './App.css';
 
-
 class App extends Component {
   render() {
     return (
@@ -17,9 +16,15 @@ class App extends Component {
           </div>
         </header>
         <div className="wrapper">
-          <Timerwrapper />
-          <HumanToUnix />
-          <UnixToHuman />
+          <ToggleWrapper title="Timer">
+            <Timerwrapper />
+          </ToggleWrapper>
+          <ToggleWrapper title="Convert to unix date">
+            <HumanToUnix />
+          </ToggleWrapper>
+          <ToggleWrapper title="Convert unix to human readable date">
+            <UnixToHuman />
+          </ToggleWrapper>
         </div>
       </div>
     );
@@ -27,3 +32,27 @@ class App extends Component {
 }
 
 export default App;
+
+class ToggleWrapper extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      toggled: false
+    }
+  }
+
+  render() {
+    const {toggled} = this.state
+    const toggleIconStyle = toggled ? 'arrow-down' : 'arrow-left'
+
+    return <div>
+
+      <h2 className={toggleIconStyle} onClick={this.changeToggle}>{this.props.title}</h2>
+      {this.state.toggled ? this.props.children : null}
+    </div>
+  }
+
+  changeToggle = () => {
+    this.setState({toggled: !this.state.toggled})
+  }
+}

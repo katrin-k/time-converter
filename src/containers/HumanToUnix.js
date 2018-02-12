@@ -40,7 +40,6 @@ export default class HumanToUnix extends React.Component {
     }
 
     return <section>
-      <h2>Convert to unix date</h2>
       <InputOptions initialValue={this.state.radioValue} onClick={this.handleRadioButtonChange}/>
       <form onSubmit={this.convertToUnixDate} className="form-convert" >
         {input}

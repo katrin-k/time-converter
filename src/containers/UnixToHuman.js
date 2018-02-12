@@ -24,7 +24,6 @@ export default class UnixToHuman extends React.Component {
     const rfc2822 = baseDate ? baseDate.getRfc2822() : null
 
     return <section>
-      <h2>Convert unix to human readable date</h2>
       <form onSubmit={this.convertToHumanDate} className="form-convert" >
         <input type="number" value={this.state.inputValue} onChange={this.handleInputChange} />
         <Button value="Convert to Human readable Date" />

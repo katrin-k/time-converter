@@ -12,6 +12,40 @@ section {
   color: white;
 }
 
+.arrow-down,
+.arrow-left {
+  position: relative;
+  padding-left: 2rem;
+  cursor: pointer;
+}
+
+.arrow-down::before,
+.arrow-left::before {
+  content: '';
+  display: inline-block;
+  margin-right: 0.5rem;
+  position: absolute;
+  left: 0;
+}
+
+.arrow-left::before {
+  top: 3px;
+  width: 0; 
+  height: 0; 
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;  
+  border-left:10px solid black; 
+}
+
+.arrow-down::before {
+  top: 8px;
+  width: 0; 
+  height: 0; 
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 10px solid black;
+}
+
 @media screen and (min-width: 768px) {
   .wrapper {
     margin: 0 3rem;
