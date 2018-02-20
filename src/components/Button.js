@@ -4,6 +4,11 @@ import './Button.css'
 export default class Button extends Component {
 
   render() {
-    return <button type="submit" onClick={this.props.onSubmit} className="button" >{this.props.value}</button>
+    const { type, value } = this.props
+    if (type === 'submit') {
+      return <button type={type} onClick={this.props.onSubmit} className="button button-submit">{value}</button>
+    } else if (type === 'reset') {
+      return <button type='reset' className="button button-reset">{value}</button>
+    }
   }
 }

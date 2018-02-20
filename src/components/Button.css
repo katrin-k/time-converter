@@ -5,21 +5,36 @@
   -moz-appearance: none;
   appearance: none;
   margin-left: 0.5rem;
-  border: 1px solid var(--maroon);
   border-radius: 3px;
   padding: 0.3rem 0.5rem;
   background: transparent;
-  color: var(--maroon);
   font-size: 0.9rem;
   transition: all 0.1s ease-in;
 }
 
-.button:hover {
-  color: white;
-  background-color: var(--maroon);
-  cursor: pointer;
+.button-submit {
+  border: 1px solid var(--maroon);
+  color: var(--maroon);
+}
+
+.button-reset {
+  border: 1px solid grey;
+  color: grey;
 }
 
 .button:focus {
   outline: none;
+}
+
+.button:hover {
+  color: white;
+  cursor: pointer;
+}
+
+.button-submit:hover {
+  background-color: var(--maroon);
+}
+
+.button-reset:hover {
+  background-color: grey;
 }

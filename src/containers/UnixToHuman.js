@@ -14,7 +14,8 @@ export default class UnixToHuman extends React.Component {
   }
 
   render() {
-    const {baseDate} = this.state
+    const {baseDate, inputValue} = this.state
+    const canBeSubmitted = inputValue.length > 0
     
     const en12Hrs = baseDate ? baseDate.get12Hrs() : null
     const en24Hrs = baseDate ? baseDate.get24Hrs() : null
@@ -24,37 +25,56 @@ export default class UnixToHuman extends React.Component {
     const rfc2822 = baseDate ? baseDate.getRfc2822() : null
 
     return <section>
-      <h2>Convert unix to human readable date</h2>
-      <form onSubmit={this.convertToHumanDate} className="form-convert" >
+      <form onSubmit={this.convertToHumanDate} onReset={this.handleReset} className="form-convert" >
         <input type="number" value={this.state.inputValue} onChange={this.handleInputChange} />
-        <Button value="Convert to Human readable Date" />
+        <Button value="Convert to Human readable Date" type="submit" disabled={!canBeSubmitted} />
+        {canBeSubmitted ? <Button value="Reset" type="reset" /> : null}
       </form>
       {baseDate
       ? <div className="result-block">
-          <p className="result-line">
-            <span className="result-span" >EN 12 hours, your time zone: {en12Hrs}</span>
-            <Copybutton copytext={en12Hrs} />
-          </p>
-          <p className="result-line">
-            <span className="result-span" >EN 24 hours, your time zone: {en24Hrs}</span>
-            <Copybutton copytext={en24Hrs} />
-          </p>
-          <p className="result-line">
-            <span className="result-span" >ISO 8601 UTC: {iso8601UTC}</span>
-            <Copybutton copytext={iso8601UTC} />
-          </p>
-          <p className="result-line">
-            <span className="result-span" >ISO 8601 UTC with milliseconds: {iso8601UTCMs}</span>
-            <Copybutton copytext={iso8601UTCMs} />
-          </p>
-          <p className="result-line">
-            <span className="result-span" >ISO 8601 / RFC 3339, your time zone: {iso8601}</span>
-            <Copybutton copytext={iso8601} />
-          </p>
-          <p className="result-line">
-            <span className="result-span" >RFC 2822, your time zone: {rfc2822}</span>
-            <Copybutton copytext={rfc2822} />
-          </p>
+          {/* use map() to display results */}
+          <div className="result-line">
+            <div className="result-title">EN 12 hours, your time zone:</div>
+            <div>
+              <span className="result-date">{en12Hrs}</span>
+              <Copybutton copytext={en12Hrs} />
+            </div>
+          </div>
+          <div className="result-line">
+            <div className="result-title">EN 24 hours, your time zone:</div>
+            <div>
+              <span className="result-date">{en24Hrs}</span>
+              <Copybutton copytext={en24Hrs} />
+            </div>
+          </div>
+          <div className="result-line">
+            <div className="result-title" >ISO 8601 UTC:</div>
+            <div>
+              <span className="result-date">{iso8601UTC}</span>
+              <Copybutton copytext={iso8601UTC} />
+            </div>
+          </div>
+          <div className="result-line">
+            <div className="result-title" >ISO 8601 UTC with milliseconds:</div>
+            <div>
+              <span className="result-date">{iso8601UTCMs}</span>
+              <Copybutton copytext={iso8601UTCMs} />
+            </div>
+          </div>
+          <div className="result-line">
+            <div className="result-title" >ISO 8601 / RFC 3339, your time zone:</div>
+            <div>
+              <span className="result-date">{iso8601}</span>
+              <Copybutton copytext={iso8601} />
+            </div>
+          </div>
+          <div className="result-line">
+            <div className="result-title" >RFC 2822, your time zone:</div>
+            <div>
+              <span className="result-date">{rfc2822}</span>
+              <Copybutton copytext={rfc2822} />
+            </div>
+          </div>
         </div>
       : null}
     </section>
@@ -64,6 +84,10 @@ export default class UnixToHuman extends React.Component {
     this.setState({inputValue: event.target.value});
   }
 
+  handleReset = (e) => {
+    e.preventDefault()
+    this.setState({inputValue: ''})
+  }
 
   convertToHumanDate = (e) => {
     e.preventDefault()
